@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
-import '../widgets/gradient_button.dart';
+
 import 'welcome_screen.dart';
 
 /// Splash screen with gradient background
@@ -71,7 +71,7 @@ class SplashScreen extends StatelessWidget {
                             Text(
                               'YOUR MUSIC SPACE',
                               style: TextStyle(
-                                color: AppColors.textWhite.withOpacity(0.6),
+                                color: AppColors.textWhite.withValues(alpha: 0.6),
                                 fontSize: 13,
                                 fontWeight: FontWeight.w600,
                                 letterSpacing: 1.5,
