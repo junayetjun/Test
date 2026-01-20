@@ -1,0 +1,29 @@
+workflows:
+  ios-ipa:
+    name: iOS IPA Build
+    max_build_duration: 60
+    instance_type: mac_mini_m1
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+    scripts:
+      - name: Set up code signing
+        script: |
+          # This script will be active if you add certificates/profiles to Codemagic UI
+          # keychain add-certificates
+      - name: Get Flutter dependencies
+        script: |
+          flutter pub get
+      - name: Build IPA
+        script: |
+          # Use --export-method development for debug or ad-hoc for testing
+          flutter build ipa --release \
+            --export-method ad-hoc \
+            --no-codesign # Remove --no-codesign if you set up signing in Codemagic
+    artifacts:
+      - build/ios/ipa/*.ipa
+    publishing:
+      email:
+        recipients:
+          - your-email@example.com
